@@ -1,20 +1,38 @@
-// abc.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include "calculator.h"
+#include "User.h" 
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main(){
+	User user;
+	cout << "Enter your name: ";
+	cin >> user.name;
+	cout << "Enter your surname: ";
+	cin >> user.surname;
+	cout << "Enter year when you born: ";
+	cin >> user.year;
+	cout << "Enter mounth when you born: ";
+	cin >> user.mounth;
+	cout << "Enter day when you born: ";
+	cin >> user.day;
+	if (!user.isUserOlderThan14(user.day, user.mounth, user.year)) {
+		cout << "You are too young for that program";
+		return 0;
+	}
+	cout << "Enter your country: ";
+	cin >> user.country;
+	cout << "Enter your username: ";
+	cin >> user.username;
+	cout << "Enter your password: ";
+	cin >> user.password;
+	/*
+	calculator calc;
+	calc.setNumber1(5);
+	calc.setNumber2(10);
+	Number number3;
+	number3.value = 15;
+	cout << "Sum: " << calc.calculate('+').value << "\n";
+	cout << "Sub: " << calc.calculate('-').value << "\n";
+	cout << "Mlt: " << calc.calculate('*').value << "\n";
+	cout << "Div: " << calc.calculate('/').value << "\n";*/
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

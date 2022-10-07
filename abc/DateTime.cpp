@@ -8,6 +8,20 @@
 #include<stdexcept>
 using namespace std;
 
+
+void DateTime::changeTimeZone(int offset) {
+	if (offset > 13 || offset < -14) {
+		cout << "Wrong Time Zone";
+		return;
+	}
+	this->hours = this->hours - currentTimeZone + offset;
+	this->currentTimeZone = offset;
+};
+
+int DateTime::getTimeZone() {
+	return this->currentTimeZone;
+}
+
 DateTime::DateTime()
 {
 	day = 1;
@@ -41,6 +55,7 @@ DateTime::DateTime(int day, int month, int year,
 
 DateTime DateTime::now() 
 {
+
 	time_t now = time(0);
 	tm* tmNow = gmtime(&now);
 
@@ -49,7 +64,7 @@ DateTime DateTime::now()
 	output.day = tmNow->tm_mday;
 	output.month = tmNow->tm_mon + 1;
 	output.year = tmNow->tm_year + 1900;
-	output.hours = tmNow->tm_hour + 3;
+	output.hours = tmNow->tm_hour + output.currentTimeZone;
 	output.minutes = tmNow->tm_min;
 	output.seconds = tmNow->tm_sec;
 	return output;

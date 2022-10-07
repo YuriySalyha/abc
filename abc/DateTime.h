@@ -5,10 +5,13 @@
 #include<iomanip>
 #include<stdexcept>
 using namespace std;
-
 class  DateTime
 {
+protected:
+	int currentTimeZone = 2;
 public:
+	int getTimeZone();
+	void changeTimeZone(int offset);
 	vector<int> monthDays = { {31}, {28}, {31}, {30}, {31}, {30}, {31}, {31}, {30}, {31}, {30}, {31} };
 	int day;
 	int month;

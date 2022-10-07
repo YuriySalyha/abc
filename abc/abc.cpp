@@ -1,38 +1,45 @@
-#include <iostream>
-#include "calculator.h"
-#include "User.h" 
-using namespace std;
+#include<iostream>
+#include<iomanip>
+#include<stdexcept>
+#include"DateTime.h"
 
-int main(){
-	User user;
-	cout << "Enter your name: ";
-	cin >> user.name;
-	cout << "Enter your surname: ";
-	cin >> user.surname;
-	cout << "Enter year when you born: ";
-	cin >> user.year;
-	cout << "Enter mounth when you born: ";
-	cin >> user.mounth;
-	cout << "Enter day when you born: ";
-	cin >> user.day;
-	if (!user.isUserOlderThan14(user.day, user.mounth, user.year)) {
-		cout << "You are too young for that program";
-		return 0;
-	}
-	cout << "Enter your country: ";
-	cin >> user.country;
-	cout << "Enter your username: ";
-	cin >> user.username;
-	cout << "Enter your password: ";
-	cin >> user.password;
-	/*
-	calculator calc;
-	calc.setNumber1(5);
-	calc.setNumber2(10);
-	Number number3;
-	number3.value = 15;
-	cout << "Sum: " << calc.calculate('+').value << "\n";
-	cout << "Sub: " << calc.calculate('-').value << "\n";
-	cout << "Mlt: " << calc.calculate('*').value << "\n";
-	cout << "Div: " << calc.calculate('/').value << "\n";*/
+class Number
+{
+public:
+    int value;
+    Number operator+(const Number& second)
+    {
+        return Number{ this->value + second.value };
+    }
+
+    Number& operator=(const int& input) {
+        this->value = input;
+        return *this;
+    }
+    Number& operator=(const double& input) {
+        this->value = (int)input;
+        return *this;
+    }
+};
+
+std::ostream& operator<<(std::ostream& output, const Number& input)
+{
+    output << "Number: " << input.value << "\n";
+    return output;
+}
+
+std::istream& operator>>(std::istream& input, Number& output) {
+
+    input >> output.value;
+    return input;
+}
+
+int main()
+{
+    DateTime e;
+    return 0;
+    cout << "Select your time zone: ";
+    int a;
+    cin >> a;
+    e.changeTimeZone(a);
 }
